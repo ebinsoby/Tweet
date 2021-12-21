@@ -1,8 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import moment from "moment";
 import PropTypes from 'prop-types'
+import Avatar from './Components/Avatar'
+import Author from './Components/Author'
+import Time from './Components/Time'
+import Message from './Components/Message'
+import ReplyButton from './Components/ReplyButton'
+import RetweetButton from './Components/RetweetButton'
+import LikeButton from './Components/LikeButton'
+import MoreOptionsButton from './Components/MoreOptionsButton'
 
 function Tweet({ tweet }) {
   return (
@@ -27,83 +34,6 @@ Tweet.propTypes = {
   tweet : PropTypes.object,
 }
 
-function Avatar({ hash }) {
-  return (
-    <img
-      src={`https://gravatar.com/avatar/${hash}`}
-      alt="avatar"
-      className="avatar"
-    />
-  );
-}
-Avatar.propTypes = {
-  hash : PropTypes.string
-}
-
-function Message({ text }) {
-  return <div className="message">{text}</div>;
-}
-
-Message.propTypes = {
-  text : PropTypes.string,
-}
-
-function Author({ author }) {
-  const { name, handle } = author;
-  return (
-    <span className="author">
-      <span className="name">{name}</span>
-      <span className="handle">{`@${handle}`}</span>
-    </span>
-  );
-}
-
-Author.propTypes = {
-  author : PropTypes.shape({
-    name : PropTypes.string,
-    handle : PropTypes.string,
-  }).isRequired,
-}
-
-const Time = ({ time }) => (
-  <span className="time">{moment(time).fromNow()}</span>
-);
-
-Time.propTypes = {
-  time : PropTypes.string,
-}
-
-const ReplyButton = () => <i className="fa fa-reply reply-button" />;
-
-const RetweetButton = ({ count }) => (
-  <span className="retweet-button">
-    <i className="fa fa-retweet" />
-    {getRetweetCount(count)}
-  </span>
-);
-
-const LikeButton = ({ count }) => (
-  <span className="like-button">
-    <i className="fa fa-heart" />
-    {count > 0 && <span className="like-count">{count}</span>}
-  </span>
-);
-
-LikeButton.propTypes = {
-  count : PropTypes.number
-}
-
-const MoreOptionsButton = () => (
-  <i className="fa fa-ellipsis-h more-options-button" />
-);
-
-function getRetweetCount(count) {
-  if (count > 0) {
-    return <span className="retweet-count">{count}</span>;
-  } else {
-    return null;
-  }
-}
 
 const testTweet = {
   message: "Play longterm games",
