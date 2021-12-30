@@ -34,7 +34,6 @@ Tweet.propTypes = {
   tweet : PropTypes.object,
 }
 
-
 const testTweet = {
   message: "Play longterm games",
   gravatar: "7b74b3bd280928b0638cdd1b3b1b40ac?size=200",
@@ -44,7 +43,7 @@ const testTweet = {
   },
   likes: 1000,
   retweets: 30,
-  timestamp: "2016-07-30 21:24:37",
+  timestamp: "2021-12-29 22:10:37",
 };
 
 ReactDOM.render(<Tweet tweet={testTweet} />, document.querySelector("#root"));
